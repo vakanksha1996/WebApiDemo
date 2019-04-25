@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="Scripts/jquery-1.10.2.js"></script>
+    <script src="Scripts/bootstrap.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var employees = $("#ulemployees");
+            $("#getemployees").click(function () {
+                var username = $("#username").val();
+                var password = $("#password").val();
+                $.ajax({
+                    type: "GET",
+                    url: "api/Employeedbs/",
+                    headers: {
+                        'Authorization': 'Basic ' + btoa(username + ':' + password)
+                    },
+                 DataType:"xml",
+                   success: function (data) {
+         
+                        employees.empty();
+                        $.each(data, function (index, val) {
+                            var fullname = val.FirstName + " " + val.LastName;
+                            employees.append("<li>" + fullname + " (" + val.Gender + ")</li>");
+
+                        })
+
+                    },
+                    complete: function (data) {
+                        if (data.status == '401') {
+
+                           employees.empty();
+                            employees.append("<li>" + data.status + " Invalid User</li>");
+
+                        }
+
+                    }
+                })
+
+           
+            $("#clear").click(function () {
+                employees.empty();
+            })
+            })
+
+        })
+       
+    </script>
+</head>
+<body style="padding:20px">
+    <div>
+      Username:<input type="text" id="username" /> &nbsp;&nbsp;
+      Password:<input type="text" id="password"/><br /><br />
+        <button type="button"  id="getemployees">Authenticate user and get Employees</button>
+        <button type="button" id="clear">ClearAll</button>
+        <ul id="ulemployees"></ul>
+       </div>
+</body>
+</html>

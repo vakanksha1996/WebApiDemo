@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Scripts/jquery-1.10.2.min.js"></script>
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $("#user").text(sessionStorage.getItem("userName"));
+            $("#logout").click(function () {
+                alert(sessionStorage.getItem("tokenkey"));
+                sessionStorage.removeItem("tokenkey");
+                window.location.href = "http://localhost:60770/Login.html";
+            })
+            var token = sessionStorage.getItem("tokenkey");
+            var headers = {};
+            if (token == null) {
+                window.location.href = "http://localhost:60770/Login.html";
+            }
+            else {
+                headers.Authorization = "Bearer " + token;
+            }
+            
+            
+            
+            $("#load").click(function () {
+
+                $.ajax({
+                    type: "GET",
+                    
+                    url: "api/Employeedbs/",
+                    headers: {
+                        'Authorization': 'Bearer '+sessionStorage.getItem("tokenkey")
+                    },
+                    DataType: "xml",
+                    success: function (response) {
+                        alert("success");
+                        $("#data").empty();
+                        $.each(response,function (index, value) {
+                            $("#data").append("<tr><td>" + value.Id + "</td><td>" + value.FirstName +
+                                "</td><td>" + value.LastName + "</td><td>" + value.Salary +
+                                "</td>><td>" + value.Gender + "</td></tr>")
+                        })
+
+                  
+                    },
+                    error: function (response) {
+                        alert("error");
+                        window.location.href = "http://localhost:60770/Login.html";
+                        alert(response.responseText);
+                    }
+                })
+            })
+
+
+        })
+    </script>
+</head>
+<body>
+    <div class="col-md-6 col-md-offset-2" style="padding:30px">
+        <div class="well">
+            <div class="row">
+                <div height="50%" style="float:left"><input type="button" id="load" value="Load Employees" class="btn btn-success" /><span id="user"></span></div>
+                <div height="50%" style="float:right"><input type="button" id="logout" value="LogOut" class="btn btn-danger" /></div>
+
+            </div>
+            
+           <hr />
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>EmpID</th>
+                        <th>FirstName</th>
+                        <th>LastName</th>
+                        <th>Salary</th>
+                        <th>Gender</th>
+                    </tr>
+
+                </thead>
+                <tbody id="data"></tbody>
+            </table>
+        </div>
+     </div>
+</body>
+</html>

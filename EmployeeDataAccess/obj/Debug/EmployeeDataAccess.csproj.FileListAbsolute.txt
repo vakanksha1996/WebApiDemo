@@ -1,0 +1,10 @@
+c:\users\akanksha.v\documents\visual studio 2015\Projects\WebApiDemo\EmployeeDataAccess\bin\Debug\EmployeeDataAccess.dll.config
+c:\users\akanksha.v\documents\visual studio 2015\Projects\WebApiDemo\EmployeeDataAccess\bin\Debug\EmployeeDataAccess.dll
+c:\users\akanksha.v\documents\visual studio 2015\Projects\WebApiDemo\EmployeeDataAccess\bin\Debug\EmployeeDataAccess.pdb
+c:\users\akanksha.v\documents\visual studio 2015\Projects\WebApiDemo\EmployeeDataAccess\bin\Debug\EntityFramework.dll
+c:\users\akanksha.v\documents\visual studio 2015\Projects\WebApiDemo\EmployeeDataAccess\bin\Debug\EntityFramework.SqlServer.dll
+c:\users\akanksha.v\documents\visual studio 2015\Projects\WebApiDemo\EmployeeDataAccess\bin\Debug\EntityFramework.xml
+c:\users\akanksha.v\documents\visual studio 2015\Projects\WebApiDemo\EmployeeDataAccess\bin\Debug\EntityFramework.SqlServer.xml
+c:\users\akanksha.v\documents\visual studio 2015\Projects\WebApiDemo\EmployeeDataAccess\obj\Debug\EmployeeDataAccess.csprojResolveAssemblyReference.cache
+c:\users\akanksha.v\documents\visual studio 2015\Projects\WebApiDemo\EmployeeDataAccess\obj\Debug\EmployeeDataAccess.dll
+c:\users\akanksha.v\documents\visual studio 2015\Projects\WebApiDemo\EmployeeDataAccess\obj\Debug\EmployeeDataAccess.pdb

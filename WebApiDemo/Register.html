@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="Scripts/jquery-1.10.2.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $("#register").click(function () {
+                $("#email").css("background-color", "yellow");
+              //  $("#email").val() = "abc@gmail.com";
+                var data = {
+                    Email: $("#email").val(),
+                    Password: $("#password").val(),
+                    ConfirmPassword: $("#confirmpassword").val()
+                };
+                $.ajax({ 
+                    type: 'POST',
+                    url: '/api/Account/Register',
+                    contentType: 'application/json; charset=utf-8',
+                    data: JSON.stringify(data),
+                   
+                    success: function (response) {
+                        alert("Done!");
+                        window.location.href = "http://localhost:60770/Login.html";
+
+                    },
+                    error: function (data) {
+                        alert(data.responseText);
+                    }
+                })
+            })
+        })
+    </script>
+
+</head>
+
+<body>
+    <div class="row" style="padding:10px">
+       
+        <div  class="col-md-10 col-md-offset-1">
+            <div class="well">
+                <table border="1">
+                    <thead>
+                        <tr class="success">
+                            <td colspan="2" align="center">Registration</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Email</td>
+                            <td><input type="email" id="email" /></td>
+                        </tr>
+                        <tr>
+                            <td>Password</td>
+                            <td><input type="password" id="password" /></td>
+                        </tr>
+                        <tr>
+                            <td>Confirm Password</td>
+                            <td><input type="password" id="confirmpassword" /></td>
+                        </tr>
+                        <tr>
+                            <td><input type="button"  class="btn btn-success" id="register" value="Register" /></td>
+                            <td><a class="btn btn-primary" id="login" href="Login.html">Login</a></td>
+
+                        </tr>
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+        
+    </div>
+   <!--Email:<input type="email"  id="email" /><br />
+   Password: <input type="password" id="password"/><br />
+   ConfirmPassword: <input type="password" id="confirmpassword"/><br />
+    <input type="button" id="register" value="Register" />-->
+   
+ </body>
+
+</html>
